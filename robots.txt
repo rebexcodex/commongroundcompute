@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://commongroundcompute.com/sitemap.xml
