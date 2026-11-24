@@ -598,6 +598,7 @@ footer { border-top: 1px solid var(--rule); padding: 32px 0 48px; font-size: 14p
           <div class="sub"><input type="checkbox" id="cfListName" name="list_name" value="yes"><label for="cfListName">You may list my name and organization as a reviewer in the published version</label></div>
         </div>
         <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <input type="hidden" name="source" id="cfSource" value="">
         <button type="submit">Send</button>
         <p class="form-status" id="cfStatus" role="status" aria-live="polite"></p>
       </form>
@@ -750,6 +751,22 @@ requestAnimationFrame(() => setTimeout(() => document.getElementById("venn").cla
   var form = document.getElementById("contactForm");
   var status = document.getElementById("cfStatus");
   if (!form) return;
+  // Record which tagged link brought the visitor here (matches "Source key" in the CRM sheet).
+  var src = "";
+  try {
+    var q = new URLSearchParams(location.search);
+    if (q.get("utm_source")) {
+      src = q.get("utm_source") + (q.get("utm_content") ? "-" + q.get("utm_content") : "");
+      sessionStorage.setItem("cgc-source", src);
+    } else {
+      src = sessionStorage.getItem("cgc-source") || "";
+    }
+    if (!src && document.referrer) {
+      var host = new URL(document.referrer).hostname.replace(/^www\./, "");
+      if (host && host !== location.hostname) src = "referral:" + host;
+    }
+  } catch (e) {}
+  document.getElementById("cfSource").value = (src || "direct").slice(0, 100);
   form.addEventListener("submit", function (e) {
     e.preventDefault();
     status.className = "form-status";
