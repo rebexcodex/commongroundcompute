@@ -269,21 +269,28 @@ footer { border-top: 1px solid var(--rule); padding: 32px 0 48px; font-size: 14p
 .field { display: grid; gap: 6px; }
 .field label, .field .lbl { font-weight: 700; font-size: 15px; }
 .field .opt { font-weight: 400; color: var(--muted); }
-.field input, .field select, .field textarea { font: inherit; font-size: 16px; color: var(--ink); background: var(--paper); border: 2px solid var(--rule); border-radius: 10px; padding: 10px 12px; width: 100%; }
-.field textarea { min-height: 140px; resize: vertical; }
-.field input:focus, .field select:focus, .field textarea:focus { border-color: var(--ink); outline: none; }
+.field input, .field select, .field textarea { font: inherit; font-size: 16px; color: var(--ink); background-color: var(--paper); border: 1.5px solid var(--rule); border-radius: 10px; padding: 10px 12px; width: 100%; }
+.field input, .field select { height: 46px; }
+.field select { appearance: none; -webkit-appearance: none; padding-right: 38px; cursor: pointer; background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%); background-position: right 19px center, right 14px center; background-size: 5px 5px; background-repeat: no-repeat; }
+.field select:invalid, .field select option[value=""] { color: var(--muted); }
+.field textarea { min-height: 120px; resize: vertical; }
+.field input:focus, .field select:focus, .field textarea:focus { border-color: var(--ink); outline: none; box-shadow: 0 0 0 3px color-mix(in srgb, var(--ink) 12%, transparent); }
 .row2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; }
 .reviewer { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 12px; align-items: start; background: var(--center-tint); border-radius: 10px; padding: 14px 16px; }
 .reviewer input { width: 20px; height: 20px; margin: 2px 0 0; accent-color: var(--accent); }
 .reviewer label { font-weight: 700; }
 .reviewer span { grid-column: 2; font-size: 14px; color: var(--muted); }
-.reviewer .sub { grid-column: 2; display: flex; gap: 10px; align-items: start; margin-top: 8px; font-size: 15px; }
+.reviewer .sub { grid-column: 2; display: flex; gap: 10px; align-items: start; margin-top: 10px; padding-top: 10px; border-top: 1px solid color-mix(in srgb, var(--ink) 12%, transparent); font-size: 15px; }
+.reviewer:not(:has(#cfReviewer:checked)) .sub { display: none; }
+.reviewer label { cursor: pointer; }
 .reviewer .sub input { flex: none; }
 .reviewer .sub label { font-weight: 400; }
 .hp { position: absolute; left: -9999px; }
-.contact-form button[type=submit] { justify-self: start; background: var(--accent); color: var(--accent-ink); font-size: 16px; padding: 10px 22px; }
+.contact-form button[type=submit] { background: var(--accent); color: var(--accent-ink); font-size: 16px; padding: 10px 22px; }
 .contact-form button[type=submit]:hover { text-decoration: underline; }
-.form-status { font-size: 15px; font-weight: 600; }
+.form-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; }
+.form-status { font-size: 15px; font-weight: 600; flex: 1 1 220px; }
+.form-status:empty { display: none; }
 .form-status.ok { color: var(--place-ink); } .form-status.err { color: var(--people-ink); }
 @media (max-width: 860px) { .contact, .row2 { grid-template-columns: minmax(0, 1fr); } }
 
@@ -611,8 +618,10 @@ footer { border-top: 1px solid var(--rule); padding: 32px 0 48px; font-size: 14p
         </div>
         <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
         <input type="hidden" name="source" id="cfSource" value="">
-        <button type="submit">Send</button>
-        <p class="form-status" id="cfStatus" role="status" aria-live="polite"></p>
+        <div class="form-actions">
+          <button type="submit">Send</button>
+          <p class="form-status" id="cfStatus" role="status" aria-live="polite"></p>
+        </div>
       </form>
     </div>
   </div>
@@ -799,6 +808,8 @@ requestAnimationFrame(() => setTimeout(() => document.getElementById("venn").cla
     }
   } catch (e) {}
   document.getElementById("cfSource").value = (src || "direct").slice(0, 100);
+  var rev = document.getElementById("cfReviewer"), listName = document.getElementById("cfListName");
+  rev.addEventListener("change", function () { if (!rev.checked) listName.checked = false; });
   form.addEventListener("submit", function (e) {
     e.preventDefault();
     status.className = "form-status";
