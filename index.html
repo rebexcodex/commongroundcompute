@@ -159,6 +159,7 @@ section { padding: clamp(40px, 5.5vw, 64px) 0; border-top: 1px solid var(--rule)
 .ladder-scale { display: grid; grid-template-columns: 40fr 10fr 10fr 20fr 20fr; font-size: 12px; color: var(--muted); margin-top: 4px; }
 .ladder-scale span { border-left: 1px solid var(--rule); padding-left: 4px; }
 .floors { margin-top: 18px; overflow-x: auto; }
+.floors .trange, .floors-note { display: none; }
 table { border-collapse: collapse; width: 100%; font-size: 15px; }
 th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--rule); vertical-align: top; }
 th { font-size: 13px; color: var(--muted); font-weight: 700; }
@@ -311,6 +312,28 @@ footer { border-top: 1px solid var(--rule); padding: 32px 0 48px; font-size: 14p
   .navcta .us { display: none; }
   .brandnav { grid-column: 1 / -1; }
 }
+@media (max-width: 640px) {
+  /* Rating section: compact stat cards, tier table becomes stacked cards */
+  .mech { gap: 12px; }
+  .mech .card { padding: 16px 18px; gap: 6px; }
+  .mech .big-num { font-size: 40px; }
+  .ladder { display: none; }
+  .floors { overflow: visible; }
+  .floors table, .floors tbody { display: block; }
+  .floors thead { display: none; }
+  .floors tr { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 12px; align-items: baseline; background: var(--panel); border: 1px solid var(--rule); border-radius: var(--radius); padding: 14px 16px; }
+  .floors tr + tr { margin-top: 10px; }
+  .floors td { padding: 0; border: 0; }
+  .floors td:nth-child(1) { font-family: var(--display); font-weight: 800; font-size: 20px; }
+  .floors td:nth-child(2) { font-weight: 700; font-size: 15px; }
+  .floors td:nth-child(2)::after { content: " points"; font-weight: 500; color: var(--muted); }
+  .floors td:nth-child(3) { grid-column: 1 / -1; grid-row: 3; text-align: left; font-size: 14px; color: var(--muted); white-space: normal; }
+  .floors td:nth-child(3)::before { content: "Minimum in each pillar: "; }
+  .floors td:nth-child(4) { grid-column: 1 / -1; grid-row: 4; font-size: 15px; line-height: 1.45; }
+  .floors .trange { display: block; grid-column: 1 / -1; grid-row: 2; position: relative; height: 6px; margin: 2px 0 4px; border-radius: 999px; background: color-mix(in srgb, var(--ink) 10%, transparent); }
+  .floors .trange span { position: absolute; top: 0; bottom: 0; left: calc(var(--a) * 1%); width: calc((var(--b) - var(--a)) * 1%); border-radius: 999px; background: var(--accent); }
+  .floors-note { display: block; margin-top: 12px; }
+}
 @media (max-width: 480px) {
   .overlaps { grid-template-columns: minmax(0, 1fr); }
   .slider { grid-template-columns: 90px minmax(0, 1fr) 48px; }
@@ -447,12 +470,13 @@ footer { border-top: 1px solid var(--rule); padding: 32px 0 48px; font-size: 14p
       <table>
         <thead><tr><th>Tier</th><th class="num">Total points</th><th class="num">Minimum in each pillar</th><th>What it signals</th></tr></thead>
         <tbody>
-          <tr><td>Inform</td><td class="num">40–49</td><td class="num">none</td><td>The community knows what is being built and how it performs. Meets every prerequisite and does real work in at least one area.</td></tr>
-          <tr><td>Consult</td><td class="num">50–59</td><td class="num">6 of 30</td><td>The community's input shapes the project. Solid in one or two pillars, present in all three.</td></tr>
-          <tr><td>Include</td><td class="num">60–79</td><td class="num">12 of 30</td><td>The community shares in the benefits and the decisions. Strong overall, with no pillar left behind.</td></tr>
-          <tr><td>Empower</td><td class="num">80–100</td><td class="num">18 of 30</td><td>The community has real power over the site and what it does. A leader in all three circles. No credit is mandatory, so leaders get here without perfect scores.</td></tr>
+          <tr><td>Inform</td><td class="num">40–49</td><td class="num">none</td><td>The community knows what is being built and how it performs. Meets every prerequisite and does real work in at least one area.</td><td class="trange" aria-hidden="true"><span style="--a:40;--b:50"></span></td></tr>
+          <tr><td>Consult</td><td class="num">50–59</td><td class="num">6 of 30</td><td>The community's input shapes the project. Solid in one or two pillars, present in all three.</td><td class="trange" aria-hidden="true"><span style="--a:50;--b:60"></span></td></tr>
+          <tr><td>Include</td><td class="num">60–79</td><td class="num">12 of 30</td><td>The community shares in the benefits and the decisions. Strong overall, with no pillar left behind.</td><td class="trange" aria-hidden="true"><span style="--a:60;--b:80"></span></td></tr>
+          <tr><td>Empower</td><td class="num">80–100</td><td class="num">18 of 30</td><td>The community has real power over the site and what it does. A leader in all three circles. No credit is mandatory, so leaders get here without perfect scores.</td><td class="trange" aria-hidden="true"><span style="--a:80;--b:100"></span></td></tr>
         </tbody>
       </table>
+      <p class="note floors-note">Below 40 points, or missing any prerequisite: not rated.</p>
     </div>
   </div>
 </section>
