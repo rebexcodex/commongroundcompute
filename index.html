@@ -177,10 +177,20 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-sp
 .pillar-head .dot { width: 0.8em; height: 0.8em; flex: none; border-radius: 50%; background: var(--pc); }
 .pillar-head .pts { font-family: var(--display); font-weight: 800; font-size: 44px; line-height: 0.95; color: var(--pci); font-variant-numeric: tabular-nums; }
 .pillar-head .pts small { font-size: 13px; letter-spacing: 0; color: var(--muted); font-weight: 500; display: block; text-align: right; }
-.pillar + .pillar { margin-top: 56px; }
+.pillar + .pillar { margin-top: 44px; }
 .pillar .q { font-size: 19px; font-weight: 600; margin-top: 4px; }
 .pillar .sum { color: var(--muted); margin-top: 14px; }
 .credits { overflow-x: auto; margin-top: 12px; }
+.ctoggle { margin-top: 16px; }
+.ctoggle > summary { display: inline-flex; align-items: center; gap: 10px; cursor: pointer; list-style: none; font-weight: 700; font-size: 15px; color: var(--pci); background: var(--pct); border-radius: var(--radius); padding: 8px 14px; }
+.ctoggle > summary::-webkit-details-marker { display: none; }
+.ctoggle > summary::after { content: ""; width: 7px; height: 7px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: translateY(-2px) rotate(45deg); transition: transform 0.2s; }
+.ctoggle[open] > summary::after { transform: translateY(2px) rotate(-135deg); }
+.ctoggle > summary:hover { box-shadow: inset 0 0 0 1.5px var(--pc); }
+.ctoggle > summary:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.ctoggle .hide-label, .ctoggle[open] .show-label { display: none; }
+.ctoggle[open] .hide-label { display: inline; }
+@media (prefers-reduced-motion: reduce) { .ctoggle > summary::after { transition: none; } }
 .credits table { min-width: 760px; }
 .area-row td { background: var(--pct); color: var(--pci); font-size: 14px; font-weight: 700; padding-top: 8px; padding-bottom: 8px; }
 .cid { font-size: 13px; color: var(--pci); font-weight: 600; white-space: nowrap; }
@@ -348,7 +358,7 @@ footer { border-top: 1px solid var(--rule); padding: 32px 0 48px; font-size: 14p
         <text class="small" x="186" y="316" text-anchor="middle">prosperity</text>
         <text class="small" x="374" y="300" text-anchor="middle">Clean,</text>
         <text class="small" x="374" y="316" text-anchor="middle">useful compute</text>
-        <circle class="hub" cx="280" cy="231" r="60" aria-hidden="true"/>
+        <a href="#pillar-center"><circle class="hub" cx="280" cy="231" r="60" style="cursor:pointer"><title>Common ground</title></circle></a>
         <text class="heart" x="280" y="226" text-anchor="middle">Common</text>
         <text class="heart" x="280" y="246" text-anchor="middle">ground</text>
       </svg>
@@ -685,16 +695,34 @@ function pillarSums(scores) {
         rows += `<tr><td class="cid">${esc(c.id)}</td><td><div class="cname">${esc(c.name)}</div><div class="cintent">${esc(c.intent)}</div></td><td class="creq">${esc(c.requirement)}<div class="cmet" style="margin-top:6px">Measured as: ${esc(c.metric)}</div></td><td class="num">${c.points ? `<b>${c.points}</b>` : `<span class="req-pill">Required</span>`}</td></tr>`;
       }
     }
+    const nReq = credits.filter(c => c.points === 0).length;
+    const credLabel = `all ${credits.length} credits` + (nReq ? ` (${nReq} required)` : "");
     const el = document.createElement("div");
     el.className = "pillar";
     el.id = "pillar-" + p.key;
     el.style.setProperty("--pc", COLORS[p.key]);
     el.style.setProperty("--pci", INKS[p.key]);
     el.style.setProperty("--pct", TINTS[p.key]);
-    el.innerHTML = `<div class="pillar-head"><div><h3 style="font-size:clamp(30px,3.6vw,40px);font-weight:800"><span class="dot" aria-hidden="true"></span>${esc(p.name)}</h3><div class="q">${esc(p.question)}</div></div><div class="pts">${p.points}<small>points</small></div></div><p class="sum">${esc(p.summary)}</p><div class="credits"><table><thead><tr><th>ID</th><th style="width:28%">Credit</th><th>Requirement</th><th class="num">Points</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+    el.innerHTML = `<div class="pillar-head"><div><h3 style="font-size:clamp(30px,3.6vw,40px);font-weight:800"><span class="dot" aria-hidden="true"></span>${esc(p.name)}</h3><div class="q">${esc(p.question)}</div></div><div class="pts">${p.points}<small>points</small></div></div><p class="sum">${esc(p.summary)}</p><details class="ctoggle"><summary><span class="show-label">Show ${credLabel}</span><span class="hide-label">Hide ${credLabel}</span></summary><div class="credits"><table><thead><tr><th>ID</th><th style="width:28%">Credit</th><th>Requirement</th><th class="num">Points</th></tr></thead><tbody>${rows}</tbody></table></div></details>`;
     root.appendChild(el);
   }
   document.getElementById("prereqCount").textContent = prereqs;
+  const openFromHash = () => {
+    const t = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    const d = t && t.classList.contains("pillar") && t.querySelector("details");
+    if (d) { d.open = true; t.scrollIntoView({ block: "start" }); }
+  };
+  window.addEventListener("hashchange", openFromHash);
+  document.querySelectorAll('a[href^="#pillar-"]').forEach(a => a.addEventListener("click", e => {
+    const id = a.getAttribute("href").slice(1), t = document.getElementById(id);
+    if (!t) return;
+    e.preventDefault();
+    const d = t.querySelector("details");
+    if (d) d.open = true;
+    if (location.hash !== "#" + id) history.pushState(null, "", "#" + id);
+    t.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+  }));
+  openFromHash();
 })();
 
 // Scenarios
