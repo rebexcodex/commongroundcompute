@@ -248,6 +248,8 @@ ul.plain { margin: 0; padding-left: 20px; display: grid; gap: 8px; }
 .refs li span { display: block; color: var(--muted); }
 @media (max-width: 860px) { .refs { grid-template-columns: minmax(0, 1fr); } }
 footer { border-top: 1px solid var(--rule); padding: 32px 0 48px; font-size: 14px; color: var(--muted); }
+.footgrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 48px; }
+@media (max-width: 720px) { .footgrid { grid-template-columns: minmax(0, 1fr); gap: 12px; } }
 
 /* How communities use it */
 .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 28px; list-style: none; padding: 0; }
@@ -672,7 +674,7 @@ footer { border-top: 1px solid var(--rule); padding: 32px 0 48px; font-size: 14p
 </section>
 
 <footer>
-  <div class="wrap stack" style="gap:12px">
+  <div class="wrap footgrid">
     <p><b>Common Ground Compute</b> · Draft v0.1 · November 2026 · by Rebecca Butler and Christina Liebner. Example scores on this page are hypothetical. Thresholds are a first draft, open for testing and public comment.</p>
     <p><b>License.</b> The text, the framework and the scoring method are licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. You can copy, adapt and share them, including commercially, as long as you credit us. The name and logo aren't covered.</p>
     <p><b>If you adapt it.</b> Give your version its own name, say which version of Common Ground Compute it's based on, and list what you changed. "Based on Common Ground Compute v0.1" is fine. Please don't suggest we reviewed or endorse it.</p>
