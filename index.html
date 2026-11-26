@@ -141,6 +141,10 @@ section { padding: clamp(40px, 5.5vw, 64px) 0; border-top: 1px solid var(--rule)
 /* Opinion */
 .view { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: clamp(24px, 4vw, 56px); }
 .view .body p + p { margin-top: 14px; }
+.view .body h3 + p { margin-top: 8px; }
+.view .body p + h3 { margin-top: 28px; }
+.view .body .about-cta { margin-top: 28px; }
+.why-draft { margin-top: clamp(36px, 5vw, 56px); }
 .pull { font-family: var(--display); font-weight: 500; font-size: clamp(21px, 2.4vw, 27px); line-height: 1.35; letter-spacing: -0.005em; text-wrap: balance; border-left: 4px solid var(--center); border-radius: 0; padding-left: 16px; max-width: 26ch; }
 
 /* Rating mechanics */
@@ -402,6 +406,29 @@ footer { border-top: 1px solid var(--rule); padding: 32px 0 48px; font-size: 14p
   </div>
 </header>
 
+<section id="why">
+  <div class="wrap view">
+    <div class="stack">
+      <h2>Why we built this</h2>
+    </div>
+    <div class="body">
+      <p>We're energy engineers. We've spent our careers making buildings and the grid cleaner, and it's been hard to watch data center growth put pressure on the electricity and water we've worked to protect. We're also mothers, aunties and neighbors. We care what kind of place our kids inherit, and we don't think communities should have to choose between technology and their health.</p>
+      <p>We're hopeful about AI. It can help people start businesses, learn at their own pace and advance science and medicine, and we used it ourselves to draft this framework. That future depends on who owns AI and who benefits from it. As we watched city after city fight data center proposals, we asked what it would take for communities to have a real seat at the table.</p>
+      <p>We started with three pillars, Place, People and Purpose, and a few questions. What could a data center look like if it met our community's needs and values? What standards should it meet? How would we measure the impact? We drew on the NAACP's Stop Dirty Data Centers toolkit, Unautomated's Community Impact Scorecard and the International Association for Public Participation. See <a href="#sources">what we built on</a>.</p>
+      <p>We hope communities use this as a discussion guide before a developer knocks on the door, and as a scorecard when a proposal is already on the table. The framework is free and will stay open source.</p>
+    </div>
+  </div>
+  <div class="wrap view why-draft">
+    <div class="stack">
+      <h2>Why we're sharing a draft</h2>
+    </div>
+    <div class="body">
+      <p>We don't live in frontline communities, and we haven't negotiated with city leaders and developers ourselves. That's why we're asking for comments before we call this finished. We'd especially like to hear from residents facing data center proposals, environmental justice organizers, city planners and local officials, utility engineers, data center architects and engineers, and members of the trades.</p>
+      <p>The questions we most want help with, and how to comment, are in <a href="#contribute">How to contribute</a>. Comments are open through January 31, 2027. Then we'll release v1.0 under a Creative Commons license and add a space on this site for communities to share how they've used and adapted it.</p>
+    </div>
+  </div>
+</section>
+
 <section id="view">
   <div class="wrap view">
     <div class="stack">
@@ -597,11 +624,13 @@ footer { border-top: 1px solid var(--rule); padding: 32px 0 48px; font-size: 14p
       <p class="pull">Common Ground Compute is an open framework that helps a community decide which data centers to welcome and which to turn away.</p>
     </div>
     <div class="body">
-      <p>We're Rebecca Butler and Christina Liebner, two engineers with nearly 40 years combined in clean energy, the power grid and data center efficiency. We're hopeful about the future of AI. It can help people start and run businesses, learn new skills at their own pace, spend more time with the people they love, and rapidly advance science and medicine. We've seen firsthand how useful it can be at work, and we used it to explore ideas and draft this framework.</p>
-      <p>That future depends on who owns AI and who benefits from it. We want one where power is distributed and AI is owned by all of us. So far, fear has driven most of the public conversation, and most of the benefits have gone to a few large companies.</p>
-      <p>We have concerns too. We worry about what AI means for people's jobs and families. Tech companies have let their climate goals slip in the rush to build. New data centers are increasingly off-grid, fossil-powered campuses, planned with little public notice. Communities are pushing back, especially when the answers on power, water, cost and benefit are vague. We got tired of feeling powerless, so we built a rating system.</p>
-      <p>It scores a site on three pillars: Place, People and Purpose. The draft is open source, and we're taking comments.</p>
-      <p>We're looking for collaborators to help make the framework better. <a href="#contact">Get in touch</a> or write to <a href="mailto:hello@commongroundcompute.org">hello@commongroundcompute.org</a>.</p>
+      <h3>Christina Liebner</h3>
+      <p>Christina is a mother of two young girls and an energy engineer with 20 years of experience in distributed and grid-scale renewable energy and deep energy efficiency of industrial buildings, including data centers. She grew up in Maryland, moved to the Bay Area 20 years ago, and fell in love with it.</p>
+      <p>Christina has been advocating for data center accountability in her home community of Alameda, California, which is on ancestral Muwekma Ohlone land. She wrote <a href="https://alamedapost.com/op-ed/opinion-a-call-for-a-community-advisory-board-for-data-center-business-development/">an op-ed in the Alameda Post</a> calling for a community advisory board on data center development. She hosts listening and learning sessions at the local library and farmers markets. Her vision is to build tools that empower community members to demand AI infrastructure that meets their needs and fulfills their dreams.</p>
+      <h3>Rebecca Butler</h3>
+      <p>Rebecca is an energy engineer with 20 years of experience delivering energy and grid technology to utilities and their customers. She grew up in Texas and has lived in Austin, Boulder, San Francisco and Canada, and each place shaped how she thinks about what makes a community healthy and happy. She began in building energy modeling as a LEED AP and did research at the National Renewable Energy Laboratory. She now leads Professional Services at Camus Energy, where she helps utilities manage solar, batteries and other local energy on the grid, and helps data centers connect flexibly for cleaner, more reliable power.</p>
+      <p>She lives in Costa Rica with her husband and three dogs, and is a project director with <a href="https://recycleosa.com/">Ambiciosas</a>, her local recycling center. She'd love to see communities own their energy and computing, with a local center that works like a new kind of library.</p>
+      <p class="about-cta">We're looking for collaborators to help make the framework better. <a href="#contact">Get in touch</a> or write to <a href="mailto:hello@commongroundcompute.org">hello@commongroundcompute.org</a>.</p>
     </div>
   </div>
 </section>
