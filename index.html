@@ -144,6 +144,13 @@ section { padding: clamp(40px, 5.5vw, 64px) 0; border-top: 1px solid var(--rule)
 .view .body h3 + p { margin-top: 8px; }
 .view .body p + h3 { margin-top: 28px; }
 .view .body .about-cta { margin-top: 28px; }
+.about-lead { margin-top: 20px; max-width: 34ch; }
+.bios { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(24px, 4vw, 56px); margin-top: 36px; }
+.bio h3 { font-size: 22px; }
+.bio h3 + p { margin-top: 8px; }
+.bio p + p { margin-top: 14px; }
+#about .about-cta { margin-top: 32px; }
+@media (max-width: 760px) { .bios { grid-template-columns: minmax(0, 1fr); } }
 .why-draft { margin-top: clamp(36px, 5vw, 56px); }
 .pull { font-family: var(--display); font-weight: 500; font-size: clamp(21px, 2.4vw, 27px); line-height: 1.35; letter-spacing: -0.005em; text-wrap: balance; border-left: 4px solid var(--center); border-radius: 0; padding-left: 16px; max-width: 26ch; }
 
@@ -618,20 +625,22 @@ footer { border-top: 1px solid var(--rule); padding: 32px 0 48px; font-size: 14p
 </section>
 
 <section id="about">
-  <div class="wrap view">
-    <div class="stack">
-      <h2>About us</h2>
-      <p class="pull">Common Ground Compute is an open framework that helps a community decide which data centers to welcome and which to turn away.</p>
-    </div>
-    <div class="body">
-      <h3>Christina Liebner</h3>
+  <div class="wrap">
+    <h2>About us</h2>
+    <p class="pull about-lead">Common Ground Compute is an open framework that helps a community decide which data centers to welcome and which to turn away.</p>
+    <div class="bios">
+      <div class="bio">
+        <h3>Christina Liebner</h3>
       <p>Christina is a mother of two young girls and an energy engineer with 20 years of experience in distributed and grid-scale renewable energy and deep energy efficiency of industrial buildings, including data centers. She grew up in Maryland, moved to the Bay Area 20 years ago, and fell in love with it.</p>
       <p>Christina has been advocating for data center accountability in her home community of Alameda, California, which is on ancestral Muwekma Ohlone land. She wrote <a href="https://alamedapost.com/op-ed/opinion-a-call-for-a-community-advisory-board-for-data-center-business-development/">an op-ed in the Alameda Post</a> calling for a community advisory board on data center development. She hosts listening and learning sessions at the local library and farmers markets. Her vision is to build tools that empower community members to demand AI infrastructure that meets their needs and fulfills their dreams.</p>
-      <h3>Rebecca Butler</h3>
+      </div>
+      <div class="bio">
+        <h3>Rebecca Butler</h3>
       <p>Rebecca is an energy engineer with 20 years of experience delivering energy and grid technology to utilities and their customers. She grew up in Texas and has lived in Austin, Boulder, San Francisco and Canada, and each place shaped how she thinks about what makes a community healthy and happy. She began in building energy modeling as a LEED AP and did research at the National Renewable Energy Laboratory. She has worked in technical delivery, led engineering and professional services teams, run large building systems integration projects, and developed data center infrastructure management systems for some of the world's largest companies. Today she helps utilities manage solar, batteries and other local energy on the grid, and helps data centers connect flexibly for cleaner, more affordable and reliable power.</p>
       <p>She lives in Costa Rica with her husband and three dogs, and is a project director with <a href="https://recycleosa.com/">Ambiciosas</a>, her local recycling center. She'd love to see communities own their energy and computing, with a local center that works like a new kind of library.</p>
-      <p class="about-cta">We're looking for collaborators to help make the framework better. <a href="#contact">Get in touch</a> or write to <a href="mailto:hello@commongroundcompute.org">hello@commongroundcompute.org</a>.</p>
+      </div>
     </div>
+    <p class="about-cta">We're looking for collaborators to help make the framework better. <a href="#contact">Get in touch</a> or write to <a href="mailto:hello@commongroundcompute.org">hello@commongroundcompute.org</a>.</p>
   </div>
 </section>
 
