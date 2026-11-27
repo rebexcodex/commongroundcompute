@@ -153,6 +153,10 @@ section { padding: clamp(40px, 5.5vw, 64px) 0; border-top: 1px solid var(--rule)
 #about .about-cta { margin-top: 32px; }
 #about .about-disclaimer { margin-top: 12px; }
 @media (max-width: 760px) { .bios { grid-template-columns: minmax(0, 1fr); } }
+.q-head { margin-top: 40px; }
+.questions { margin: 14px 0 0; padding-left: 1.4em; display: grid; gap: 10px; max-width: 72ch; }
+.questions li { line-height: 1.5; }
+.questions b { font-weight: 700; }
 .why-draft { margin-top: clamp(36px, 5vw, 56px); }
 .pull { font-family: var(--display); font-weight: 500; font-size: clamp(21px, 2.4vw, 27px); line-height: 1.35; letter-spacing: -0.005em; text-wrap: balance; border-left: 4px solid var(--center); border-radius: 0; padding-left: 16px; max-width: 26ch; }
 
@@ -422,9 +426,9 @@ footer { border-top: 1px solid var(--rule); padding: 32px 0 48px; font-size: 14p
     </div>
     <div class="body">
       <p>We're energy engineers. We've spent our careers making buildings and the grid cleaner, and it's been hard to watch data center growth put pressure on the electricity and water we've worked to protect. We're also mothers, aunties and neighbors. We care what kind of place our kids inherit, and we don't think communities should have to choose between technology and their health.</p>
-      <p>We're hopeful about AI. It can help people start businesses, learn at their own pace and advance science and medicine, and we used it ourselves to draft this framework. That future depends on who owns AI and who benefits from it. As we watched city after city fight data center proposals, we asked what it would take for communities to have a real seat at the table.</p>
-      <p>We started with three pillars, Place, People and Purpose, and a few questions. What could a data center look like if it met our community's needs and values? What standards should it meet? How would we measure the impact? We drew on the NAACP's Stop Dirty Data Centers toolkit, Unautomated's Community Impact Scorecard and the International Association for Public Participation. See <a href="#sources">what we built on</a>.</p>
-      <p>We hope communities use this as a discussion guide before a developer knocks on the door, and as a scorecard when a proposal is already on the table. The framework is free and will stay open source.</p>
+      <p>We're hopeful about AI. It can help people start businesses, learn at their own pace and advance science and medicine, and we used it ourselves to draft this framework. That future depends on who owns AI and who benefits from it. As we watched city after city fight data center proposals, we understood why. Worries about bills, water and jobs feel abstract until a data center gives them an address, a zoning hearing and a fence. We asked what it would take for communities to have a real seat at the table.</p>
+      <p>We started with three pillars, People, Place and Purpose, and a few questions. What could a data center look like if it met our community's needs and values? What standards should it meet? How would we measure the impact? We drew on Unautomated's Community Impact Scorecard and the International Association for Public Participation. See <a href="#sources">what we built on</a>.</p>
+      <p>We hope communities use this as a discussion guide before a developer knocks on the door, and as a scorecard when a proposal is already on the table. Our bias is toward small, clean, community-owned sites, and large projects can earn their way up with verified commitments. The framework is free and will stay open source.</p>
     </div>
   </div>
   <div class="wrap view why-draft">
@@ -433,21 +437,7 @@ footer { border-top: 1px solid var(--rule); padding: 32px 0 48px; font-size: 14p
     </div>
     <div class="body">
       <p>We don't live in frontline communities, and we haven't negotiated with city leaders and developers ourselves. That's why we're asking for comments before we call this finished. We'd especially like to hear from residents facing data center proposals, environmental justice organizers, city planners and local officials, utility engineers, data center architects and engineers, and members of the trades.</p>
-      <p>The questions we most want help with, and how to comment, are in <a href="#contribute">How to contribute</a>. Comments are open through January 31, 2027. Then we'll release v1.0 under a Creative Commons license and add a space on this site for communities to share how they've used and adapted it.</p>
-    </div>
-  </div>
-</section>
-
-<section id="view">
-  <div class="wrap view">
-    <div class="stack">
-      <h2>Community first</h2>
-      <p class="pull">How do we build and operate a data center that aligns with our community's needs and values?</p>
-    </div>
-    <div class="body">
-      <p>Most stories about data centers start from fear: bills that rise, wells that run low, jobs that go elsewhere, decisions made far away. Those fears are reasonable. A data center is where they become concrete. It has an address, a zoning hearing and a fence.</p>
-      <p>We started from that question instead. Residents would want a fair share of what a site earns, a real voice in what happens next, clean power and water they can trust, and work that helps the people who live there. Each of those can be measured. We were inspired by <a href="#sources">existing community tools and rating systems</a>, from the NAACP's community benefits agreement template to LEED, and brought them together into one rubric that starts from the community.</p>
-      <p>LEED gave buildings a shared language for "green." Common Ground Compute aims to do the same for data centers: a public scorecard that a council member, a utility engineer and a neighbor at the farmers market can all read. Our bias is toward small, clean, community-owned sites, and large projects can earn their way up with verified commitments.</p>
+      <p>The questions we most want help with, and how to comment, are in <a href="#contribute">How to contribute</a>. Comments are open through January 31, 2027. Then we'll release v1.0 under CC BY 4.0 and add a space on this site for communities to share how they've used and adapted it.</p>
     </div>
   </div>
 </section>
@@ -630,7 +620,7 @@ footer { border-top: 1px solid var(--rule); padding: 32px 0 48px; font-size: 14p
   <div class="wrap">
     <h2>About us</h2>
     <p class="pull about-lead">Common Ground Compute is an open framework that helps a community decide which data centers to welcome and which to turn away.</p>
-    <p class="about-story">Rebecca and Christina met more than a decade ago, when they were both living in the Bay Area. When they reconnected recently, they realized they had been thinking about the same problem. Christina brought the idea of a framework, and Rebecca brought the Place, People and Purpose pillars. From there it came together quickly over a series of remote meetings.</p>
+    <p class="about-story">Rebecca and Christina met more than a decade ago, when they were both living in the Bay Area. When they reconnected recently, they realized they had been thinking about the same problem. Christina brought the idea of a framework, and Rebecca brought the People, Place and Purpose pillars. From there it came together quickly over a series of remote meetings.</p>
     <div class="bios">
       <div class="bio">
         <h3>Christina Liebner</h3>
@@ -656,6 +646,15 @@ footer { border-top: 1px solid var(--rule); padding: 32px 0 48px; font-size: 14p
       <li style="--sc:var(--people)"><span class="n" aria-hidden="true">1</span><h3>Now to January 31, 2027</h3><p>Draft v0.1 is open for comment. Tell us what we missed, which thresholds feel wrong, and which words confuse.</p></li>
       <li style="--sc:var(--place)"><span class="n" aria-hidden="true">2</span><h3>During the review</h3><p>We publish v0.2 with a short summary of what we heard, then take a second round of comments before the period closes.</p></li>
       <li style="--sc:var(--purpose)"><span class="n" aria-hidden="true">3</span><h3>After the review</h3><p>We release v1.0 under CC BY 4.0, along with every change we made and why. Reviewers who agree are credited by name.</p></li>
+    </ol>
+    <h3 class="q-head">Questions we most want help with</h3>
+    <ol class="questions">
+      <li><b>Are the tiers set in the right place?</b> Do 40, 50, 60 and 80 points, and the pillar minimums of 6, 12 and 18, match what your community would call good, better and best?</li>
+      <li><b>Which prerequisites are missing, or too strict?</b> What should a project have to disclose or guarantee before it earns any points at all?</li>
+      <li><b>Is it fair to small and large sites?</b> Our bias is toward small, community-owned sites. Does the rubric give a library-sized site a real chance without letting a large campus coast?</li>
+      <li><b>Can the data be checked?</b> Is 12 months of operating data, hourly clean energy and recertification every three years realistic for the sites you know?</li>
+      <li><b>Which words confuse?</b> Tell us where a credit or term would lose people at a zoning hearing or a council meeting.</li>
+      <li><b>Who and what are we missing?</b> Point us to community tools, standards and voices we should learn from.</li>
     </ol>
     <ul class="ways">
       <li><b>Comment on the draft.</b> Use the form below, or ask us for the full credit spreadsheet at <a href="mailto:hello@commongroundcompute.org">hello@commongroundcompute.org</a>.</li>
