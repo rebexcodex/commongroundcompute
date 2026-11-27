@@ -263,6 +263,24 @@ ul.plain { margin: 0; padding-left: 20px; display: grid; gap: 8px; }
 .refs li { font-size: 15px; line-height: 1.45; }
 .refs li a { font-weight: 700; }
 .refs li span { display: block; color: var(--muted); }
+.refs .card.wide { grid-column: 1 / -1; }
+.refs .card.wide ul { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 28px; }
+.laws { margin-top: 40px; }
+.laws .lede-sm { margin-top: 8px; color: var(--muted); max-width: 72ch; }
+.laws .tbl { overflow-x: auto; margin-top: 18px; }
+.laws table { min-width: 760px; }
+.laws td.law a { font-weight: 700; }
+.laws td.law small { display: block; color: var(--muted); font-size: 13px; }
+.ptag { display: inline-block; font-size: 12px; font-weight: 700; border-radius: var(--radius); padding: 1px 8px; margin: 0 4px 4px 0; white-space: nowrap; }
+.ptag.people { background: var(--people-tint); color: var(--people-ink); }
+.ptag.place { background: var(--place-tint); color: var(--place-ink); }
+.ptag.purpose { background: var(--purpose-tint); color: var(--purpose-ink); }
+.ptag.center { background: var(--center-tint); color: var(--center-ink); }
+.ptag.none { background: transparent; box-shadow: inset 0 0 0 1.5px currentColor; }
+.tally { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; align-items: center; }
+.tally .ptag { font-size: 14px; padding: 4px 12px; }
+.laws .takeaway { margin-top: 14px; font-weight: 600; max-width: 72ch; }
+@media (max-width: 860px) { .refs .card.wide ul { grid-template-columns: minmax(0, 1fr); } }
 @media (max-width: 860px) { .refs { grid-template-columns: minmax(0, 1fr); } }
 footer { border-top: 1px solid var(--rule); padding: 32px 0 48px; font-size: 14px; color: var(--muted); }
 .footgrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 48px; }
@@ -568,32 +586,32 @@ footer { border-top: 1px solid var(--rule); padding: 32px 0 48px; font-size: 14p
 <section id="sources">
   <div class="wrap">
     <h2>What we built on</h2>
-    <p class="subhead">Community tools, rating systems, standards and research behind this draft</p>
+    <p class="subhead">Community tools, rating systems, standards, recent law and research behind this draft</p>
     <div class="refs">
       <div class="card">
         <h3>Community tools we learned from</h3>
         <ul>
           <li><a href="https://naacp.org/sites/default/files/documents/NAACP%20CBA%20Template%202026.pdf">NAACP community benefits agreement template</a><span>From the Stop Dirty Data Centers campaign. Enforceable commitments a community can negotiate.</span></li>
           <li><a href="https://fas.org/publication/before-breaking-ground/">Before Breaking Ground</a><span>Federation of American Scientists. A guide for local governments on ordinances, agreements and tax effects, and on deciding priorities before negotiating.</span></li>
-          <li><a href="https://grandiose-goshawk-617.convex.cloud/api/storage/9bd42a72-066c-46b5-908f-33baf60bf4ed">Data Center Community Impact Scorecard</a><span>Unautomated. Fifty questions that sharpen a community's requirements at the permit and design stage. We add a rating based on measured data that repeats over the life of the site.</span></li>
           <li><a href="https://www.wri.org/technical-perspectives/community-benefits-agreements-data-centers">Community benefits agreements for data centers</a><span>World Resources Institute. Guidance and a database of community benefit frameworks.</span></li>
           <li><a href="https://esd.ny.gov/communityinvestmentframework">New York Community Investment Framework</a><span>A voluntary benchmark of $1 million in community investment per megawatt.</span></li>
-          <li><a href="https://blueprintcollaborative.org/thrive-metrics/">Thrive Metrics</a><span>Blueprint Collaborative. A community-defined way to measure whether investment delivers, built on three rights: to live, to stay and belong, and to thrive.</span></li>
           <li><a href="https://www.iap2.org/">IAP2 Spectrum of Public Participation</a><span>International Association for Public Participation. Our tier names follow its levels of public influence.</span></li>
         </ul>
       </div>
       <div class="card">
-        <h3>Rating systems we learned from</h3>
+        <h3>Ratings and metrics we learned from</h3>
         <ul>
           <li><a href="https://www.usgbc.org/leed">LEED</a><span>Points, prerequisites and tiers for green buildings. The model for our scorecard.</span></li>
           <li><a href="https://thegbi.org/">Green Globes</a><span>Green Building Initiative. Sustainability certification that includes data center campuses.</span></li>
           <li><a href="https://www.bcorporation.net/">B Corp certification</a><span>Verified social and environmental performance for whole companies, not just buildings.</span></li>
-          <li><a href="https://www.thegreengrid.org/">The Green Grid</a><span>The industry group that introduced PUE, the most common data center efficiency metric.</span></li>
+          <li><a href="https://grandiose-goshawk-617.convex.cloud/api/storage/9bd42a72-066c-46b5-908f-33baf60bf4ed">Data Center Community Impact Scorecard</a><span>Unautomated. Fifty questions that sharpen a community's requirements at the permit and design stage. We add a rating based on measured data that repeats over the life of the site.</span></li>
+          <li><a href="https://blueprintcollaborative.org/thrive-metrics/">Thrive Metrics</a><span>Blueprint Collaborative. A community-defined way to measure whether investment delivers, built on three rights: to live, to stay and belong, and to thrive.</span></li>
         </ul>
       </div>
       <div class="card">
         <h3>Standards the credits use</h3>
         <ul>
+          <li><a href="https://www.thegreengrid.org/">The Green Grid</a><span>The industry group that introduced PUE, the most common data center efficiency metric.</span></li>
           <li><a href="https://www.iso.org/standard/63451.html">ISO/IEC 30134</a><span>Definitions for PUE, WUE and energy reuse.</span></li>
           <li><a href="https://ghgprotocol.org/scope-2-guidance">GHG Protocol Scope 2</a><span>How to count emissions from purchased electricity.</span></li>
           <li><a href="https://energytag.org/">EnergyTag</a><span>Hourly certificates for matching clean energy to use.</span></li>
@@ -607,14 +625,48 @@ footer { border-top: 1px solid var(--rule); padding: 32px 0 48px; font-size: 14p
         <h3>Research and ideas</h3>
         <ul>
           <li><a href="https://alamedapost.com/op-ed/opinion-a-call-for-a-community-advisory-board-for-data-center-business-development/">A call for a community advisory board</a><span>Christina Liebner in the Alameda Post. The basis for the governance credits.</span></li>
-          <li><a href="https://epoch.ai/data-insights/open-closed-eci-gap">Open models trail closed models by about four months</a><span>Epoch AI. Why community-owned AI is realistic now.</span></li>
+          <li><a href="https://www.theguardian.com/commentisfree/2026/nov/25/democrats-ai-regulation-plan">Democrats must unite on AI regulation</a><span>Nathan E Sanders and Bruce Schneier in the Guardian. Argues data centers could be small, local facilities owned and run cooperatively by the communities they serve.</span></li>
           <li><a href="https://mgrid.org/2025/10/01/uptime-institute-data-center-pue-stagnation-2025-liquid-cooling/">Uptime Institute 2025 PUE findings</a><span>Summary by mGrid. Context for the climate-adjusted efficiency credit.</span></li>
           <li><a href="https://alamedamp.com/336/Power-Content-Label">Alameda Municipal Power content label</a><span>A community-owned utility with a 100% clean portfolio.</span></li>
           <li><a href="https://digital-strategy.ec.europa.eu/en/policies/edge-observatory">EU Edge Observatory</a><span>Tracking a target of 10,000 climate-neutral edge nodes by 2030.</span></li>
-          <li><a href="https://fiberbroadband.org/wp-content/uploads/2025/12/FBA-Whitepaper-Opportunities-for-Rural-Providers-in-the-Age-of-Distributed-AI-and-Edge-Compute_FINAL.pdf">Rural providers and distributed AI</a><span>Fiber Broadband Association white paper on edge compute in small communities.</span></li>
+          <li><a href="https://fiberbroadband.org/wp-content/uploads/2025/12/FBA-Whitepaper-Opportunities-for-Rural-Providers-in-the-Age-of-Distributed-AI-and-Edge-Compute_FINAL.pdf">Rural providers and distributed AI</a><span>Fiber Broadband Association. Rural ISPs and electric co-ops can host edge compute on fiber, land and substation capacity they already have.</span></li>
           <li><a href="https://www.farminguk.com/news/pig-slurry-powers-ai-in-new-farm-income-venture_68807.html">Pig slurry powers AI on a farm</a><span>FarmingUK. A small, local site turning waste into compute and income.</span></li>
         </ul>
       </div>
+      <div class="card wide">
+        <h3>Public AI</h3>
+        <ul>
+          <li><a href="https://www.richmondfed.org/publications/research/econ_focus/2020/q1/economic_history">The Rural Electrification Act</a><span>Richmond Fed history. Low-interest New Deal loans let member-owned co-ops bring power to rural America, one vote per member. A model for financing community sites.</span></li>
+          <li><a href="https://www.democracyrenovator.com/p/rewiring-democracy-now-switzerland">Apertus, Switzerland's public AI model</a><span>Sanders and Schneier on a fully open model built by Swiss public institutions and stewarded by a cooperative. A candidate for locally hosted community services.</span></li>
+          <li><a href="https://alia.gob.es/eng">ALIA</a><span>Spain's public, open models for Spanish and its co-official languages, built for residents, public services and small businesses.</span></li>
+          <li><a href="https://thenextweb.com/news/south-korea-free-ai-chatbot-all-citizens-domestic-models">AI for Everyone, South Korea</a><span>Free AI access for every resident, run as a public service. Evidence that free community access can work at scale.</span></li>
+          <li><a href="https://publicai.network/">Public AI Network</a><span>A coalition building AI as public infrastructure: publicly accessible, publicly accountable and permanent.</span></li>
+          <li><a href="https://epoch.ai/data-insights/open-closed-eci-gap">Open models trail closed models by about four months</a><span>Epoch AI. Why community-owned AI is realistic now.</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="laws">
+      <h3>Where recent law already agrees</h3>
+      <p class="lede-sm">Seven states have written parts of this rubric into law. We tagged each law's separate actions by the pillar they reflect. Tags and credit matches are our reading; check each law before relying on it.</p>
+      <div class="tbl">
+        <table>
+          <thead><tr><th style="width:20%">State and law</th><th>What it requires</th><th style="width:16%">Pillars</th><th style="width:18%">Closest credits</th></tr></thead>
+          <tbody>
+          <tr><td class="law"><b>California</b><small><a href="https://natlawreview.com/article/california-enacts-comprehensive-regulatory-framework-data-centers">Seven bills signed Sept 2026</a></small></td><td>Data centers pay the grid costs they cause and report energy, water, PUE and WUE. Water plans at local approval. Tighter environmental review.</td><td><span class="ptag people">People</span><span class="ptag place">Place</span></td><td class="cid">PL-P1, PL6, PE-P3</td></tr>
+          <tr><td class="law"><b>Massachusetts</b><small><a href="https://www.bdlaw.com/data-centers/publications/massachusetts-conditions-large-data-center-permits-on-community-agreements/">Executive Order 658, Sept 2026</a></small></td><td>New clean energy to match annual use. A community benefits agreement and local approval before permits. Large-load rates. No NDAs.</td><td><span class="ptag people">People</span><span class="ptag place">Place</span></td><td class="cid">PL2, PE-P1, PE5, PE-P3, PE-P4</td></tr>
+          <tr><td class="law"><b>New York</b><small><a href="https://governor.ny.gov/news/first-statewide-moratorium-new-hyperscale-data-centers-launched-governor-kathy-hochul">Executive Order 62 and Energize NY, 2026</a></small></td><td>A pause on new sites of 50 MW or more while standards are written. Bring your own power or pay a premium. Community investment and labor standards.</td><td><span class="ptag people">People</span><span class="ptag place">Place</span></td><td class="cid">PL2, PE-P3, PE2, PE6</td></tr>
+          <tr><td class="law"><b>Oregon</b><small><a href="https://www.opb.org/article/2026/06/04/data-centers-utility-rate-pge/">POWER Act, 2025</a></small></td><td>A separate rate class for sites over 20 MW, which pay their own distribution upgrades. Data center rates rose about 29% while residential rates fell 1.3%.</td><td><span class="ptag people">People</span><span class="ptag place">Place</span></td><td class="cid">PE-P3, PE9</td></tr>
+          <tr><td class="law"><b>Minnesota</b><small><a href="https://www.house.mn.gov/NewLaws/story/2025/5641">Data center law, 2025</a></small></td><td>Annual fees fund low-income energy programs. No cost shift. State clean energy standards, water limits, prevailing wage and green building certification.</td><td><span class="ptag people">People</span><span class="ptag place">Place</span></td><td class="cid">PE-P2, PE-P3, PE9, PL6</td></tr>
+          <tr><td class="law"><b>Virginia</b><small><a href="https://www.williamsmullen.com/insights/news/legal-news/virginia-budget-creates-new-electricity-consumption-tax-data-centers">2026 session and budget</a></small></td><td>Ratepayer protection. An electricity tax of $0.011 per kWh on data centers. Stricter backup generator rules and new tools for localities.</td><td><span class="ptag people">People</span><span class="ptag place">Place</span></td><td class="cid">PE-P3, PL-P2, PE10</td></tr>
+          <tr><td class="law"><b>Texas</b><small><a href="https://www.utilitydive.com/news/texas-law-gives-grid-operator-power-to-disconnect-data-centers-during-crisis/751587">SB 6, 2025</a></small></td><td>Large loads share interconnection costs, disclose backup generation and accept curtailment in grid emergencies.</td><td><span class="ptag people">People</span><span class="ptag place">Place</span></td><td class="cid">PL8, PL-P2, PE-P3</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="tally" aria-label="Actions by pillar">
+        <span class="note">Of 26 separate actions in these laws:</span>
+        <span class="ptag people">People 14</span><span class="ptag place">Place 13</span><span class="ptag purpose none">Purpose 0</span><span class="ptag center none">Common ground 0</span>
+      </div>
+      <p class="takeaway">States have started protecting communities from data centers. No law yet asks what a data center does for its community. That is what Purpose and Common ground measure.</p>
     </div>
   </div>
 </section>
